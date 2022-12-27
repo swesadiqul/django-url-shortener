@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container mx-auto">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="border border-slate-700 decoration-stone-300" value="submit">
+    </form>
+    <table class="border-separate border-spacing-2 border border-slate-500">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Original URL</th>
+            <th>Shortener URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for d in data %}
+          <tr>
+            <td class="border border-slate-700">{{ d.id }}</td>
+            <td class="border border-slate-700">{{ d.url }}</td>
+            <td class="border border-slate-700">{{ d.slug }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}
